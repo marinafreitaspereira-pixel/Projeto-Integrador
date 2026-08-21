@@ -1,71 +1,86 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // --- 1. LÓGICA DO MENU HAMBÚRGUER RESPONSIVO ---
+    // MENU MOBILE RESPONSIVO
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", function() {
+            navMenu.classList.toggle("active");
+            menuToggle.classList.toggle("open");
+        });
+    }
 
-    menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-    });
-
-    // --- 2. ACESSIBILIDADE: CONTRASTE E ALTERNADOR DE FONTE ---
+    // ACESSIBILIDADE E REGRAS DE TELA
     const btnContrast = document.getElementById("btn-contrast");
     const btnFontIncrease = document.getElementById("btn-font-increase");
     const btnFontDecrease = document.getElementById("btn-font-decrease");
-    
     let rootHtml = document.documentElement;
-    let currentFontSize = 100; // Representa 100% ou 1rem (16px)
+    let currentFontSize = 100;
 
-    btnContrast.addEventListener("click", () => {
-        document.body.classList.toggle("high-contrast");
-    });
+    if (btnContrast) {
+        btnContrast.addEventListener("click", function() {
+            document.body.classList.toggle("high-contrast");
+        });
+    }
 
-    btnFontIncrease.addEventListener("click", () => {
-        if(currentFontSize < 140) { // Limite máximo seguro
-            currentFontSize += 10;
-            rootHtml.style.setProperty("--font-scale", `${currentFontSize}%`);
-        }
-    });
+    if (btnFontIncrease) {
+        btnFontIncrease.addEventListener("click", function() {
+            if (currentFontSize < 130) {
+                currentFontSize += 10;
+                rootHtml.style.setProperty("--font-scale", currentFontSize + "%");
+            }
+        });
+    }
 
-    btnFontDecrease.addEventListener("click", () => {
-        if(currentFontSize > 90) { // Limite mínimo seguro
-            currentFontSize -= 10;
-            rootHtml.style.setProperty("--font-scale", `${currentFontSize}%`);
-        }
-    });
+    if (btnFontDecrease) {
+        btnFontDecrease.addEventListener("click", function() {
+            if (currentFontSize > 90) {
+                currentFontSize -= 10;
+                rootHtml.style.setProperty("--font-scale", currentFontSize + "%");
+            }
+        });
+    }
 
-    // --- 3. LÓGICA INTERATIVA DO SIMULADOR TÉRMICO ---
+    // CÁLCULOS LÓGICOS DO SIMULADOR FÍSICO
     const inputIntensity = document.getElementById("solar-intensity");
     const valIntensity = document.getElementById("val-intensity");
     const selectColor = document.getElementById("plate-color");
     const progressBar = document.getElementById("progress-bar");
     const piscinaTemp = document.getElementById("piscina-temp");
+    const systemStatus = document.getElementById("system-status");
 
-    function calcularEficiencia() {
-        let intensidade = parseInt(inputIntensity.value);
-        valIntensity.textContent = intensidade;
+    function atualizarSimulador() {
+        if (!inputIntensity || !valIntensity || !selectColor || !progressBar || !piscinaTemp || !systemStatus) {
+            return;
+        }
 
-        let multiplicadorCor = 1.0; // Preto Absoluto
-        if (selectColor.value === "azul") multiplicadorCor = 0.65;
-        if (selectColor.value === "branco") multiplicadorCor = 0.10;
+        let intensidade = parseInt(inputIntensity.value) || 0;
+        valIntensity.textContent = intensidade + "%";
 
-        // Cálculo dinâmico simplificado da eficiência
-        let eficienciaFinal = Math.round(intensidade * multiplicadorCor);
-        
-        // Atualiza a barra de interface visualmente com animação fluida CSS
-        progressBar.style.width = eficienciaFinal + "%";
-        progressBar.textContent = eficienciaFinal + "%";
+        let fatorAbsorcao = 1.0;
+        if (selectColor.value === "azul") fatorAbsorcao = 0.6;
+        if (selectColor.value === "branco") fatorAbsorcao = 0.05;
 
-        // Cálculo hipotético de aquecimento da piscina (Base: 22°C padrão mais ganho de eficiência)
-        let temperaturaCalculada = 22 + Math.round(eficienciaFinal * 0.12);
-        piscinaTemp.textContent = temperaturaCalculada;
+        let eficiencia = Math.round(intensidade * fatorAbsorcao);
+        progressBar.textContent = eficiencia + "%";
+        progressBar.style.background = `linear-gradient(90deg, #00f2fe ${eficiencia}%, rgba(255,255,255,0.05) ${eficiencia}%)`;
+
+        let tempFinal = 22 + Math.round(eficiencia * 0.14);
+        piscinaTemp.textContent = tempFinal;
+
+        if (eficiencia > 25) {
+            systemStatus.textContent = "BOMBA ATIVADA (AQUECENDO)";
+            systemStatus.className = "status-badge status-active";
+        } else {
+            systemStatus.textContent = "SISTEMA EM ESPERA (SOL INSUFICIENTE)";
+            systemStatus.className = "status-badge status-idle";
+        }
     }
 
-    // Escuta eventos de movimentação dos sliders e caixas de seleção
-    inputIntensity.addEventListener("input", calcularEficiencia);
-    selectColor.addEventListener("change", calcularEficiencia);
-
-    // Inicializa a simulação no primeiro carregamento
-    calcularEficiencia();
+    if (inputIntensity && selectColor) {
+        inputIntensity.addEventListener("input", atualizarSimulador);
+        selectColor.addEventListener("change", atualizarSimulador);
+        atualizarSimulador();
+    }
 });
 
