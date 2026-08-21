@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTerm CEP - Automação Sustentável</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- BARRA DE ACESSIBILIDADE DIRETA -->
+    <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de Acessibilidade">
+        <button id="btn-contrast" aria-label="Alternar Alto Contraste">🌓 Alto Contraste</button>
+        <button id="btn-font-increase" aria-label="Aumentar Fonte">A+</button>
+        <button id="btn-font-decrease" aria-label="Diminuir Fonte">A-</button>
+    </div>
+
+    <!-- CABEÇALHO E MENU NAVEGAÇÃO -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">EcoTerm<span>CEP</span></a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir Menu">☰</button>
+            <nav class="nav" id="nav-menu">
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#optica">Óptica e Ciência</a></li>
+                    <li><a href="#robotica">Robótica</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
+                    <li><a href="#impacto">Impacto Social</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO PRINCIPAL (HERO) -->
+        <section id="home" class="hero-section">
+            <div class="container animate-fade-in">
+                <h1>Aquecimento Sustentável da Piscina do CEP</h1>
+                <p>Uma solução tecnológica integrando Física, Automação e Responsabilidade Socioambiental.</p>
+                <a href="#simulador" class="btn-primary">Testar Simulador</a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO ÓPTICA APLICADA -->
+        <section id="optica" class="section-padding">
+            <div class="container grid-2">
+                <div class="content-box">
+                    <h2>Tecnociência e Óptica Aplicada</h2>
+                    <p>O coração do nosso sistema baseia-se na captação da radiação solar através de coletores planos. A luz solar atravessa a cobertura de vidro sofrendo <strong>refração</strong>. Ao atingir a chapa absorvedora escura, a radiação é convertida em calor por <strong>absorção</strong>, enquanto o vidro impede que o calor escape por <strong>reflexão interna</strong> (efeito estufa).</p>
+                    
+                    <h3>A Analogia Cromática: Disco de Newton Reverso</h3>
+                    <p>O <em>Disco de Newton</em> comprova que a luz branca é a soma de todas as cores. Para o nosso coletor, aplicamos a lógica inversa: utilizamos placas com pigmentação preta absoluta. Como o preto é a ausência de cor gerada pela absorção total de todos os comprimentos de onda, ele retém o máximo de energia térmica solar possível, garantindo máxima eficiência.</p>
+                </div>
+                <div class="image-box">
+                    <!-- ========================================== -->
+                    <!-- ESPAÇO PARA INSERÇÃO DE IMAGEM DA ÓPTICA    -->
+                    <!-- Substitua o link abaixo pela sua imagem     -->
+                    <!-- ========================================== -->
+                    <img src="https://unsplash.com" alt="Esquema ilustrativo de painéis solares térmicos sob a luz do sol, demonstrando absorção." class="responsive-img animated-float">
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO ROBÓTICA E AUTOMAÇÃO -->
+        <section id="robotica" class="section-padding bg-light">
+            <div class="container">
+                <h2 class="text-center">Automação e Engenharia de Controle</h2>
+                <p class="text-center subtitle">Como sensores e atuadores controlam o fluxo térmico de forma inteligente.</p>
+                
+                <div class="flowchart">
+                    <div class="flow-step">
+                        <div class="icon">🌡️</div>
+                        <h4>Sensores</h4>
+                        <p>Termistores NTC medem a temperatura da água na piscina e nos coletores solares simultaneamente.</p>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <div class="icon">🤖</div>
+                        <h4>Microcontrolador</h4>
+                        <p>O processador calcula o diferencial de temperatura. Se o coletor estiver mais quente que a piscina, ativa o sistema.</p>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <div class="icon">💧</div>
+                        <h4>Atuadores</h4>
+                        <p>Uma bomba hidráulica e válvulas solenoides são acionadas, forçando a circulação e aquecendo a piscina.</p>
+                    </div>
+                </div>
+
+                <div class="grid-2 mt-4">
+                    <div class="image-box">
+                        <!-- ========================================== -->
+                        <!-- ESPAÇO PARA INSERÇÃO DE IMAGEM DA ROBÓTICA  -->
+                        <!-- Substitua o link abaixo pela sua imagem     -->
+                        <!-- ========================================== -->
+                        <img src="https://unsplash.com" alt="Fotografia em close de uma placa de circuito eletrônico com luzes de sensores ligadas." class="responsive-img">
+                    </div>
+                    <div class="content-box flex-center">
+                        <p>Esta lógica evita o desperdício de energia elétrica, garantindo que o motor da bomba funcione apenas nos momentos de pico de eficiência geométrica da radiação solar, protegendo o ecossistema e reduzindo gastos públicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SIMULADOR INTERATIVO -->
+        <section id="simulador" class="section-padding">
+            <div class="container">
+                <h2 class="text-center">Simulador de Eficiência Térmica</h2>
+                <div class="simulator-card">
+                    <div class="control-group">
+                        <label for="solar-intensity">Intensidade Solar: <span id="val-intensity">50</span>%</label>
+                        <input type="range" id="solar-intensity" min="0" max="100" value="50">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="plate-color">Cor da Placa Coletora:</label>
+                        <select id="plate-color">
+                            <option value="preto">Preto Absoluto (Alta Absorção)</option>
+                            <option value="azul">Azul Escuro (Média Absorção)</option>
+                            <option value="branco">Branco Refletivo (Baixa Absorção)</option>
+                        </select>
+                    </div>
+
+                    <div class="result-group">
+                        <h4>Eficiência Estimada do Sistema</h4>
+                        <div class="progress-bar-container">
+                            <div id="progress-bar" class="progress-bar">0%</div>
+                        </div>
+                        <p class="mt-2">Temperatura Estimada da Piscina: <span id="piscina-temp">24</span>°C</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO INOVAÇÃO E IMPACTO SOCIAL -->
+        <section id="impacto" class="section-padding bg-dark text-white">
+            <div class="container text-center">
+                <h2>Inovação &amp; Impacto Social</h2>
+                <p>Muito além da economia de recursos, este projeto visa transformar o CEP em um polo de sustentabilidade prática. Tornar as informações do projeto acessíveis nesta página web garante que pessoas com limitações visuais ou motoras compreendam a transição verde da nossa escola, provando que a tecnologia do futuro deve ser limpa e, acima de tudo, **inclusiva**.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ COMPLETO -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 - Projeto Integrador CEP. Desenvolvido com HTML, CSS e JavaScript Acessíveis.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
