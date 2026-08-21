@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // MENU MOBILE RESPONSIVO
+    // 1. MENU MOBILE RESPONSIVO
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
     
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // ACESSIBILIDADE E REGRAS DE TELA
+    // 2. ACESSIBILIDADE (CONTRASTE E FONTE)
     const btnContrast = document.getElementById("btn-contrast");
     const btnFontIncrease = document.getElementById("btn-font-increase");
     const btnFontDecrease = document.getElementById("btn-font-decrease");
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // CÁLCULOS LÓGICOS DO SIMULADOR FÍSICO
+    // 3. LÓGICA DO SIMULADOR FÍSICO CORRIGIDA
     const inputIntensity = document.getElementById("solar-intensity");
     const valIntensity = document.getElementById("val-intensity");
     const selectColor = document.getElementById("plate-color");
@@ -62,11 +62,13 @@ document.addEventListener("DOMContentLoaded", function() {
         if (selectColor.value === "branco") fatorAbsorcao = 0.05;
 
         let eficiencia = Math.round(intensidade * fatorAbsorcao);
+        
+        // Atualiza o texto e preenche visualmente a barra na tela
         progressBar.textContent = eficiencia + "%";
-        progressBar.style.background = `linear-gradient(90deg, #00f2fe ${eficiencia}%, rgba(255,255,255,0.05) ${eficiencia}%)`;
+        progressBar.style.width = eficiencia + "%";
 
         let tempFinal = 22 + Math.round(eficiencia * 0.14);
-        piscinaTemp.textContent = tempFinal;
+        piscinaTemp.textContent = tempFinal + "°C";
 
         if (eficiencia > 25) {
             systemStatus.textContent = "BOMBA ATIVADA (AQUECENDO)";
@@ -80,7 +82,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (inputIntensity && selectColor) {
         inputIntensity.addEventListener("input", atualizarSimulador);
         selectColor.addEventListener("change", atualizarSimulador);
+        
+        // Inicializa a simulação com valores corretos na primeira carga
         atualizarSimulador();
     }
 });
-
