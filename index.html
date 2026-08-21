@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoTerm CEP | Automação e Sustentabilidade</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- BARRA DE ACESSIBILIDADE FLUTUANTE -->
-    <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de Acessibilidade">
-        <button id="btn-contrast" aria-label="Alternar Alto Contraste">🌓 Alto Contraste</button>
-        <button id="btn-font-increase" aria-label="Aumentar Fonte">A+</button>
-        <button id="btn-font-decrease" aria-label="Diminuir Fonte">A-</button>
+    <div class="accessibility-bar" role="complementary">
+        <button id="btn-contrast">🌓 Alto Contraste</button>
+        <button id="btn-font-increase">A+</button>
+        <button id="btn-font-decrease">A-</button>
     </div>
 
-    <!-- NAVBAR PREMIUM COM EFEITO BLUR -->
     <header class="header">
         <div class="header-container">
             <a href="#" class="logo">EcoTerm<span>CEP</span></a>
@@ -35,37 +33,25 @@
     </header>
 
     <main>
-        <!-- SEÇÃO HERO IMPRESSIONANTE -->
         <section id="home" class="hero-section">
-            <div class="hero-overlay"></div>
-            <div class="container hero-content text-center">
+            <div class="container hero-content">
                 <span class="badge">Projeto Integrador 2026</span>
                 <h1 class="gradient-text">O Futuro Térmico Sustentável</h1>
                 <p>Engenharia, robótica e física aplicadas na automação ecológica da piscina do CEP.</p>
-                <div class="hero-buttons">
-                    <a href="#simulador" class="btn-primary">Explorar Simulador</a>
-                    <a href="#optica" class="btn-secondary">Ver a Ciência</a>
-                </div>
+                <a href="#simulador" class="btn-primary">Explorar Simulador</a>
             </div>
         </section>
 
-        <!-- SEÇÃO ÓPTICA E CIÊNCIA -->
         <section id="optica" class="section-padding">
             <div class="container grid-2">
-                <div class="card content-box animate-on-scroll">
-                    <h2><span class="icon-title">☀️</span> Tecnociência e Óptica</h2>
+                <div class="card">
+                    <h2>☀️ Tecnociência e Óptica</h2>
                     <p>O aquecimento inteligente utiliza coletores planos com propriedades ópticas refinadas. A luz solar passa pela cobertura de vidro sofrendo <strong>refração</strong>. Ao atingir a chapa absorvedora escura, a radiação é retida por <strong>absorção profunda</strong>, enquanto a reflexão interna cria um microefeito estufa, blindando a perda de calor.</p>
-                    
                     <div class="divider"></div>
-                    
                     <h3>A Lógica Inversa do Disco de Newton</h3>
-                    <p>Enquanto o célebre <em>Disco de Newton</em> unifica o espectro de cores para sintetizar o branco puro, nosso projeto emprega a exata engenharia reversa. Adotamos o preto absoluto nas placas para forçar a **absorção integral** de todas as frequências de onda lumínicas, convertendo fótons em energia térmica com rendimento máximo.</p>
+                    <p>Enquanto o <em>Disco de Newton</em> unifica o espectro cromático para sintetizar o branco puro, nosso projeto emprega a engenharia reversa. Adotamos o preto absoluto nas placas para forçar a <strong>absorção integral</strong> de todas as frequências de onda lumínicas, convertendo fótons em energia térmica.</p>
                 </div>
-                <div class="image-wrapper animate-on-scroll">
-                    <!-- ======================================================= -->
-                    <!-- ESPAÇO PARA A IMAGEM DE ENTRADA 1 (ÓPTICA DO PROJETO)    -->
-                    <!-- Para usar sua imagem, altere o src para: imagens/sua.jpg -->
-                    <!-- ======================================================= -->
+                <div class="image-wrapper">
                     <div class="placeholder-graphic bg-gradient-sun">
                         <svg viewBox="0 0 100 100" class="svg-icon"><circle cx="50" cy="50" r="20" fill="#fff" opacity="0.2"/><path d="M50 15v10M50 75v10M15 50h10M75 50h10" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
                         <span>Óptica & Radiação Solar</span>
@@ -74,33 +60,26 @@
             </div>
         </section>
 
-        <!-- SEÇÃO ROBÓTICA E CONTROLE -->
         <section id="robotica" class="section-padding bg-gradient-dark">
             <div class="container">
-                <div class="text-center section-header">
+                <div class="text-center">
                     <span class="badge">Automação Inteligente</span>
-                    <h2>Arquitetura de Controle e Robótica</h2>
-                    <p>O fluxo dinâmico de processamento que gerencia o balanço de energia do sistema.</p>
+                    <h2 class="section-title">Arquitetura de Controle e Robótica</h2>
                 </div>
 
-                <!-- FLUXOGRAMA PREMIUM TECH -->
                 <div class="modern-flowchart">
                     <div class="flow-card">
                         <div class="flow-icon">🌡️</div>
                         <h3>Sensores NTC</h3>
                         <p>Capturam dados térmicos em tempo real tanto nos coletores quanto no fundo da piscina.</p>
                     </div>
-                    <div class="flow-connector">
-                        <div class="pulse-line"></div>
-                    </div>
+                    <div class="flow-connector"><div class="pulse-line"></div></div>
                     <div class="flow-card active-card">
                         <div class="flow-icon">🤖</div>
                         <h3>Microcontrolador</h3>
                         <p>Processa o delta de temperatura (&Delta;t). Toma decisões baseadas em eficiência algorítmica.</p>
                     </div>
-                    <div class="flow-connector">
-                        <div class="pulse-line"></div>
-                    </div>
+                    <div class="flow-connector"><div class="pulse-line"></div></div>
                     <div class="flow-card">
                         <div class="flow-icon">💧</div>
                         <h3>Atuadores</h3>
@@ -110,28 +89,23 @@
 
                 <div class="grid-2 mt-5">
                     <div class="image-wrapper">
-                        <!-- ======================================================= -->
-                        <!-- ESPAÇO PARA A IMAGEM DE ENTRADA 2 (ROBÓTICA/AUTOMAÇÃO)   -->
-                        <!-- ======================================================= -->
                         <div class="placeholder-graphic bg-gradient-tech">
                             <svg viewBox="0 0 100 100" class="svg-icon"><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="#fff" stroke-width="4"/><circle cx="50" cy="50" r="10" fill="#fff" opacity="0.3"/></svg>
                             <span>Hardware e Automação</span>
                         </div>
                     </div>
-                    <div class="card content-box flex-center">
+                    <div class="card">
                         <h3>Gestão Dinâmica de Recursos</h3>
-                        <p>Diferente de sistemas legados de aquecimento, a inteligência embarcada calcula o momento exato em que a radiação incidente compensa a troca térmica. Isso elimina ciclos falsos de bombeamento, preserva o ciclo de vida dos atuadores mecânicos e derruba o consumo de eletricidade a quase zero.</p>
+                        <p>Diferente de sistemas legados de aquecimento, a inteligência embarcada calcula o momento exato em que a radiação incidente compensa a troca térmica. Isso elimina ciclos falsos de bombeamento e reduz radicalmente o desperdício energético.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO SIMULADOR ULTRA INTERATIVO -->
         <section id="simulador" class="section-padding">
             <div class="container">
-                <div class="text-center section-header">
-                    <h2>Simulador de Eficiência Térmica</h2>
-                    <p>Interaja com os parâmetros físicos e veja a resposta da automação na hora.</p>
+                <div class="text-center mb-4">
+                    <h2 class="section-title">Simulador de Eficiência Térmica</h2>
                 </div>
                 
                 <div class="glass-simulator">
@@ -140,9 +114,8 @@
                             <label for="solar-intensity">Intensidade da Radiação Solar: <span id="val-intensity" class="highlight-val">50%</span></label>
                             <input type="range" id="solar-intensity" min="0" max="100" value="50" class="modern-slider">
                         </div>
-                        
                         <div class="control-wrapper">
-                            <label for="plate-color">Revestimento Cromático do Coletor:</label>
+                            <label for="plate-color">Revestimento do Coletor:</label>
                             <select id="plate-color" class="modern-select">
                                 <option value="preto">Preto Absoluto (Absorção Maximizada)</option>
                                 <option value="azul">Azul Escuro (Absorção Média)</option>
@@ -150,15 +123,12 @@
                             </select>
                         </div>
                     </div>
-                    
                     <div class="sim-display">
                         <div class="metric-box">
                             <h4>Rendimento Óptico</h4>
-                            <div class="radial-progress-container">
-                                <div id="progress-bar" class="premium-progress-bar">0%</div>
-                            </div>
+                            <div id="progress-bar" class="premium-progress-bar">0%</div>
                         </div>
-                        <div class="metric-box status-box">
+                        <div class="metric-box">
                             <h4>Status do Sistema</h4>
                             <div id="system-status" class="status-badge">Aguardando...</div>
                             <p class="temp-text"><span id="piscina-temp">24</span>°C</p>
@@ -169,7 +139,30 @@
             </div>
         </section>
 
-        <!-- SEÇÃO INOVAÇÃO E IMPACTO SOCIAL -->
-        <section id="impacto" class="section-padding bg-dark text-white">
+        <section id="impacto" class="section-padding bg-gradient-dark">
             <div class="container grid-2">
-                <div class="card glass-card content-box">
+                <div class="card">
+                    <span class="badge alert-badge">Impacto e Inclusão</span>
+                    <h2 class="mt-3">Conscientização & Cidadania Digital</h2>
+                    <p>Este portal web cumpre premissas estritas de acessibilidade. Prover navegação clara por teclado, alto contraste instantâneo e design limpo garante que os avanços ecológicos da piscina do CEP possam ser acessados e estudados por qualquer membro da comunidade escolar, sem exclusões.</p>
+                </div>
+                <div class="image-wrapper">
+                    <div class="placeholder-graphic bg-gradient-social">
+                        <svg viewBox="0 0 100 100" class="svg-icon"><path d="M30 70c0-10 8-15 20-15s20 5 20 15M50 50a10 10 0 100-20 10 10 0 000 20z" fill="none" stroke="#fff" stroke-width="4"/></svg>
+                        <span>Sustentabilidade Inclusiva</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <p>&copy; 2026 Engenharia EcoTerm CEP.</p>
+            <p>HTML5 Semântico &bull; CSS Premium &bull; Vanilla JS</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
