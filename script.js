@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. MENU MOBILE RESPONSIVO
+    // LINKS DO MENU MOBILE
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
-    
     if (menuToggle && navMenu) {
         menuToggle.addEventListener("click", function() {
             navMenu.classList.toggle("active");
@@ -10,80 +9,65 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 2. ACESSIBILIDADE (CONTRASTE E FONTE)
-    const btnContrast = document.getElementById("btn-contrast");
-    const btnFontIncrease = document.getElementById("btn-font-increase");
-    const btnFontDecrease = document.getElementById("btn-font-decrease");
-    let rootHtml = document.documentElement;
-    let currentFontSize = 100;
+    // CONTROLES DO NOVO SIMULADOR SUSTENTÁVEL
+    const sliderSol = document.getElementById("solar-intensity");
+    const txtSol = document.getElementById("val-intensity");
+    const seletorCor = document.getElementById("plate-color");
+    const barraProgresso = document.getElementById("progress-bar");
+    const txtTemperatura = document.getElementById("piscina-temp");
+    const badgeStatus = document.getElementById("system-status");
 
-    if (btnContrast) {
-        btnContrast.addEventListener("click", function() {
-            document.body.classList.toggle("high-contrast");
-        });
-    }
-
-    if (btnFontIncrease) {
-        btnFontIncrease.addEventListener("click", function() {
-            if (currentFontSize < 130) {
-                currentFontSize += 10;
-                rootHtml.style.setProperty("--font-scale", currentFontSize + "%");
-            }
-        });
-    }
-
-    if (btnFontDecrease) {
-        btnFontDecrease.addEventListener("click", function() {
-            if (currentFontSize > 90) {
-                currentFontSize -= 10;
-                rootHtml.style.setProperty("--font-scale", currentFontSize + "%");
-            }
-        });
-    }
-
-    // 3. LÓGICA DO SIMULADOR FÍSICO CORRIGIDA
-    const inputIntensity = document.getElementById("solar-intensity");
-    const valIntensity = document.getElementById("val-intensity");
-    const selectColor = document.getElementById("plate-color");
-    const progressBar = document.getElementById("progress-bar");
-    const piscinaTemp = document.getElementById("piscina-temp");
-    const systemStatus = document.getElementById("system-status");
-
-    function atualizarSimulador() {
-        if (!inputIntensity || !valIntensity || !selectColor || !progressBar || !piscinaTemp || !systemStatus) {
+    function processarSimulacao() {
+        if (!sliderSol || !txtSol || !seletorCor || !barraProgresso || !txtTemperatura || !badgeStatus) {
             return;
         }
 
-        let intensidade = parseInt(inputIntensity.value) || 0;
-        valIntensity.textContent = intensidade + "%";
+        // Pega os valores do painel
+        let intensidadeSolar = parseInt(sliderSol.value);
+        txtSol.textContent = intensidadeSolar + "%";
 
-        let fatorAbsorcao = 1.0;
-        if (selectColor.value === "azul") fatorAbsorcao = 0.6;
-        if (selectColor.value === "branco") fatorAbsorcao = 0.05;
+        // Aplica a física das cores (Absorção Óptica)
+        let coeficienteAbsorcao = 1.0; // Preto Absoluto absorve tudo
+        if (seletorCor.value === "azul") coeficienteAbsorcao = 0.60;
+        if (seletorCor.value === "branco") coeficienteAbsorcao = 0.05; // Branco reflete
 
-        let eficiencia = Math.round(intensidade * fatorAbsorcao);
+        // Calcula a eficiência final do coletor do CEP
+        let eficienciaCalculada = Math.round(intensidadeSolar * coeficienteAbsorcao);
         
-        // Atualiza o texto e preenche visualmente a barra na tela
-        progressBar.textContent = eficiencia + "%";
-        progressBar.style.width = eficiencia + "%";
+        // Atualiza o tamanho e texto da barra dinamicamente
+        barraProgresso.textContent = eficienciaCalculada + "%";
+        barraProgresso.style.width = eficienciaCalculada + "%";
 
-        let tempFinal = 22 + Math.round(eficiencia * 0.14);
-        piscinaTemp.textContent = tempFinal + "°C";
-
-        if (eficiencia > 25) {
-            systemStatus.textContent = "BOMBA ATIVADA (AQUECENDO)";
-            systemStatus.className = "status-badge status-active";
+        // Altera a cor da barra de forma inteligente baseado no rendimento
+        if (eficienciaCalculada >= 60) {
+            barraProgresso.style.backgroundColor = "#00e676"; // Verde (Excelente)
+        } else if (eficienciaCalculada >= 20) {
+            barraProgresso.style.backgroundColor = "#ff9100"; // Laranja (Médio)
         } else {
-            systemStatus.textContent = "SISTEMA EM ESPERA (SOL INSUFICIENTE)";
-            systemStatus.className = "status-badge status-idle";
+            barraProgresso.style.backgroundColor = "#ff5252"; // Vermelho (Baixo)
+        }
+
+        // Calcula o ganho térmico real da água (Temperatura base da piscina: 22°C)
+        let temperaturaFinal = 22 + Math.round(eficienciaCalculada * 0.16);
+        txtTemperatura.textContent = temperaturaFinal + "°C";
+
+        // Lógica de Automação dos Atuadores (Microcontrolador Virtual)
+        if (eficienciaCalculada > 15) {
+            badgeStatus.textContent = "BOMBA ATIVADA (AQUECENDO PISCINA)";
+            badgeStatus.className = "status-badge status-active";
+        } else {
+            badgeStatus.textContent = "SISTEMA EM ESPERA (SOL INSUFICIENTE)";
+            badgeStatus.className = "status-badge status-idle";
         }
     }
 
-    if (inputIntensity && selectColor) {
-        inputIntensity.addEventListener("input", atualizarSimulador);
-        selectColor.addEventListener("change", atualizarSimulador);
+    // Adiciona os escutadores de movimento e clique
+    if (sliderSol && seletorCor) {
+        sliderSol.addEventListener("input", processarSimulacao);
+        seletorCor.addEventListener("change", processarSimulacao);
         
-        // Inicializa a simulação com valores corretos na primeira carga
-        atualizarSimulador();
+        // Força a execução inicial para o site já abrir funcionando
+        processarSimulacao();
     }
 });
+
