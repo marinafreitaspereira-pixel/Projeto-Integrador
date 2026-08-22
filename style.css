@@ -295,24 +295,28 @@ body.high-contrast .modern-select { background: #000000; border: 1px solid #ffff
 
 .sim-display { display: flex; flex-direction: column; justify-content: center; gap: 20px; }
 .metric-box { background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); padding: 24px; border-radius: 12px; text-align: center; }
+/* ==========================================================================
+   CORREÇÃO DO SIMULADOR (O COISINHO QUE SE MEXE)
+   ========================================================================== */
 .radial-progress-container {
     width: 100%;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 30px;
     margin-top: 15px;
     border: 1px solid var(--card-border);
-    overflow: hidden;
+    overflow: hidden; /* Garante que a barra não vaze para fora do bloco */
 }
 
 .premium-progress-bar {
-    width: 0%;
-    background: linear-gradient(90deg, #00f2fe, #4facfe);
+    width: 0%; /* O JavaScript vai controlar esse tamanho dinamicamente */
+    background: linear-gradient(90deg, #00f2fe, #4facfe) !important;
     padding: 10px;
     text-align: center;
     font-weight: 700;
-    color: #000;
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #000 !important; /* Deixa o texto interno preto para dar leitura */
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Faz a barra encher de forma suave */
 }
+
 
 .status-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; margin-top: 5px; }
 .status-active { background: rgba(0, 230, 118, 0.15); color: var(--accent); }
