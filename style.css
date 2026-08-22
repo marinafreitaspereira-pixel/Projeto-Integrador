@@ -275,9 +275,12 @@ body.high-contrast .modern-select { background: #000000; border: 1px solid #ffff
 }
 @keyframes flowPulse { 0% { left: 0%; opacity: 0; } 50% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
 
+/* ==========================================================================
+   INTERFACES E ANIMAÇÕES DO SIMULADOR AVANÇADO
+   ========================================================================== */
 .glass-simulator {
     background: rgba(15, 23, 42, 0.6);
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     padding: 40px;
     max-width: 900px;
@@ -285,43 +288,97 @@ body.high-contrast .modern-select { background: #000000; border: 1px solid #ffff
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
-.control-wrapper { margin-bottom: 30px; }
-.control-wrapper label { display: block; margin-bottom: 12px; font-weight: 500; }
-.highlight-val { color: var(--primary); font-weight: 700; }
-.modern-slider { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: #1e293b; outline: none; }
-.modern-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); cursor: pointer; }
-.modern-select { width: 100%; padding: 12px; background: #1e293b; border: 1px solid var(--card-border); color: #fff; border-radius: 8px; outline: none; }
 
-.sim-display { display: flex; flex-direction: column; justify-content: center; gap: 20px; }
-.metric-box { background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); padding: 24px; border-radius: 12px; text-align: center; }
-/* ==========================================================================
-   CORREÇÃO DO SIMULADOR (O COISINHO QUE SE MEXE)
-   ========================================================================== */
+.control-wrapper { margin-bottom: 30px; }
+.control-wrapper label { display: block; margin-bottom: 12px; font-weight: 600; color: #fff; }
+.highlight-val { color: var(--primary); font-weight: 700; margin-left: 5px; }
+
+.modern-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    background: #1e293b;
+    outline: none;
+    cursor: pointer;
+}
+
+.modern-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00f2fe;
+    cursor: pointer;
+    box-shadow: 0 0 12px #00f2fe;
+    transition: transform 0.1s;
+}
+
+.modern-slider::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+}
+
+.modern-select {
+    width: 100%;
+    padding: 14px;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
 .radial-progress-container {
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 30px;
     margin-top: 15px;
-    border: 1px solid var(--card-border);
-    overflow: hidden; /* Garante que a barra não vaze para fora do bloco */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
 }
 
 .premium-progress-bar {
-    width: 0%; /* O JavaScript vai controlar esse tamanho dinamicamente */
-    background: linear-gradient(90deg, #00f2fe, #4facfe) !important;
-    padding: 10px;
+    width: 0%;
+    padding: 12px;
     text-align: center;
-    font-weight: 700;
-    color: #000 !important; /* Deixa o texto interno preto para dar leitura */
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Faz a barra encher de forma suave */
+    font-weight: 800;
+    color: #0a0f1d !important;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
 }
 
+.status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
 
-.status-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; margin-top: 5px; }
-.status-active { background: rgba(0, 230, 118, 0.15); color: var(--accent); }
-.status-idle { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
-.temp-text { font-size: 3.5rem; font-weight: 900; color: #fff; line-height: 1; margin: 15px 0 5px 0; }
+.status-active { 
+    background: rgba(0, 230, 118, 0.12); 
+    color: #00e676; 
+    border: 1px solid rgba(0, 230, 118, 0.3);
+    box-shadow: 0 0 15px rgba(0, 230, 118, 0.1);
+}
+
+.status-idle { 
+    background: rgba(255, 145, 0, 0.12); 
+    color: #ff9100; 
+    border: 1px solid rgba(255, 145, 0, 0.3);
+}
+
+.temp-text { font-size: 3.8rem; font-weight: 900; color: #fff; line-height: 1; margin: 20px 0 8px 0; }
+
 .sub-temp { font-size: 0.85rem; color: var(--text-muted); }
 
 .footer { border-top: 1px solid var(--card-border); padding: 40px 0; background: #020617; font-size: 0.9rem; color: var(--text-muted); }
