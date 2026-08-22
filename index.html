@@ -104,10 +104,11 @@
             </div>
         </section>
 
+             <!-- SEÇÃO SIMULADOR ULTRA INTERATIVO -->
         <section id="simulador" class="section-padding">
             <div class="container">
                 <div class="text-center mb-4">
-                    <h2 class="section-title">Simulador de Eficiência Térmica</h2>
+                    <h2 class="section-title">Painel de Controle e Eficiência</h2>
                 </div>
                 
                 <div class="glass-simulator">
@@ -117,27 +118,26 @@
                             <input type="range" id="solar-intensity" min="0" max="100" value="50" class="modern-slider">
                         </div>
                         <div class="control-wrapper">
-                            <label for="plate-color">Revestimento do Coletor:</label>
+                            <label for="plate-color">Revestimento Térmico do Coletor:</label>
                             <select id="plate-color" class="modern-select">
                                 <option value="preto">Preto Absoluto (Absorção Maximizada)</option>
-                                <option value="azul">Azul Escuro (Absorção Média)</option>
+                                <option value="azul" selected>Azul Escuro (Absorção Média)</option>
                                 <option value="branco">Branco Total (Reflexão Dominante)</option>
                             </select>
                         </div>
                     </div>
                     <div class="sim-display">
-                       <div class="metric-box">
-    <h4>Rendimento Óptico</h4>
-    <div class="radial-progress-container">
-        <div id="progress-bar" class="premium-progress-bar">0%</div>
-    </div>
-</div>
-
                         <div class="metric-box">
-                            <h4>Status do Sistema</h4>
-                            <div id="system-status" class="status-badge">Aguardando...</div>
-                            <p class="temp-text"><span id="piscina-temp">24</span>°C</p>
-                            <span class="sub-temp">Temperatura da Piscina</span>
+                            <h4>Rendimento Óptico do Sistema</h4>
+                            <div class="radial-progress-container">
+                                <div id="progress-bar" class="premium-progress-bar">50%</div>
+                            </div>
+                        </div>
+                        <div class="metric-box">
+                            <h4>Status da Automação (Bombas)</h4>
+                            <div id="system-status" class="status-badge status-active">BOMBA ATIVADA (AQUECENDO)</div>
+                            <p class="temp-text"><span id="piscina-temp">29°C</span></p>
+                            <span class="sub-temp">Temperatura Atual da Piscina</span>
                         </div>
                     </div>
                 </div>
